@@ -6,11 +6,11 @@ import (
 	"net"
 	"time"
 
-	"github.com/duanckham/gel/gel"
-
 	"google.golang.org/grpc"
 
+	"github.com/duanckham/gel/gel"
 	"github.com/duanckham/gel/pb"
+
 	"github.com/golang/protobuf/ptypes/empty"
 )
 
