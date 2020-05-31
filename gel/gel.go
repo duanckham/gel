@@ -164,6 +164,7 @@ func (g *gi) reap() {
 func (g *gi) interval(period time.Duration) Gel {
 	go func() {
 		t := time.NewTicker(period)
+		defer t.Stop()
 
 		for {
 			<-t.C
