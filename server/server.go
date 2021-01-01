@@ -10,7 +10,6 @@ import (
 
 	"github.com/duanckham/gel/gel"
 	"github.com/duanckham/gel/pb"
-
 	"github.com/golang/protobuf/ptypes/empty"
 )
 

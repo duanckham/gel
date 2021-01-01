@@ -6,12 +6,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/golang/protobuf/ptypes"
-
 	"github.com/duanckham/gel/pb"
-	"github.com/duanckham/hands"
-
 	"github.com/duanckham/gel/utils"
+	"github.com/duanckham/hands"
+	"github.com/golang/protobuf/ptypes"
 )
 
 // LogVariablePlaceholder ...
@@ -129,17 +127,18 @@ func (g *gi) SetTrigger(f recordsTriggerFunc) {
 func (g *gi) dump() (*pb.Record, error) {
 	// Landing round.
 	l := (g.round + 1) % 3
+	r := g.rec[l]
 
-	ts, err := ptypes.TimestampProto(g.rec[l].Ts)
+	ts, err := ptypes.TimestampProto(r.Ts)
 	if err != nil {
 		// TODO
 	}
 
 	p := pb.Record{
 		Ts:       ts,
-		Numbers:  g.rec[l].Numbers,
-		Instants: g.rec[l].Instants,
-		Logs:     g.rec[l].Logs,
+		Numbers:  r.Numbers,
+		Instants: r.Instants,
+		Logs:     r.Logs,
 	}
 
 	t := g.recordSP.Get().(record)
